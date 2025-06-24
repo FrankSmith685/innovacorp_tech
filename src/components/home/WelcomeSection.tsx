@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import CustomImage from "../ui/CustomImage";
 import { welcomeData } from "./data/WelcomeText";
 import CustomButton from "../ui/CustomButton";
+import { useRouter } from "next/navigation";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -17,6 +18,7 @@ const fadeIn = {
 
 const WelcomeSection = () => {
   const [showMore, setShowMore] = useState(false);
+  const router = useRouter();
 
   return (
     <section className="relative w-full bg-gradient-to-br from-white to-indigo-50 py-16 px-4 md:px-16">
@@ -118,7 +120,7 @@ const WelcomeSection = () => {
                   <p className="text-gray-700 mb-4 leading-relaxed tracking-wide text-sm">
                     {welcomeData.ctaDescription}
                   </p>
-                  <CustomButton variantType="indigo" className="!w-auto !rounded-2xl">
+                  <CustomButton variantType="indigo" className="!w-auto !rounded-2xl" onClick={() => router.push("/contactanos")}>
                   {welcomeData.ctaButton}
                 </CustomButton>
                 </div>
