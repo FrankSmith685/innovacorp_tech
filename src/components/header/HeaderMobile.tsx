@@ -39,21 +39,19 @@ export default function MobileHeader({
                 className="border border-blue-100 rounded-2xl p-4 bg-white/90 hover:bg-blue-50 shadow-md hover:shadow-lg transition-all duration-300"
               >
                 {/* Título del menú (clickeable) */}
-                <div
-                  onClick={() =>
-                    item.subItems.length > 0
-                      ? setExpandedIndex(isExpanded ? null : idx)
-                      : setMenuOpen(false)
-                  }
-                  className="cursor-pointer w-full flex flex-col gap-2"
-                >
-                  <div className="flex justify-between items-center gap-3 font-medium text-[15px] text-blue-700 hover:text-blue-800">
-                    <div className="flex items-center gap-3">
-                      <span className="text-xl">{item.icon}</span>
-                      {item.label}
-                    </div>
+                {item.subItems.length > 0 ? (
+                  <div
+                    onClick={() =>
+                      setExpandedIndex(isExpanded ? null : idx)
+                    }
+                    className="cursor-pointer w-full flex flex-col gap-2"
+                  >
+                    <div className="flex justify-between items-center gap-3 font-medium text-[15px] text-blue-700 hover:text-blue-800">
+                      <div className="flex items-center gap-3">
+                        <span className="text-xl">{item.icon}</span>
+                        {item.label}
+                      </div>
 
-                    {item.subItems.length > 0 && (
                       <motion.span
                         animate={{ rotate: isExpanded ? 90 : 0 }}
                         transition={{ duration: 0.2 }}
@@ -61,15 +59,35 @@ export default function MobileHeader({
                       >
                         {isExpanded ? <FiChevronDown /> : <FiChevronRight />}
                       </motion.span>
+                    </div>
+
+                    {item.description && (
+                      <p className="text-sm text-gray-600 mt-1 pl-9 leading-snug">
+                        {item.description}
+                      </p>
                     )}
                   </div>
+                ) : (
+                  <Link
+                    href={item.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="w-full flex flex-col gap-2 cursor-pointer"
+                  >
+                    <div className="flex justify-between items-center gap-3 font-medium text-[15px] text-blue-700 hover:text-blue-800">
+                      <div className="flex items-center gap-3">
+                        <span className="text-xl">{item.icon}</span>
+                        {item.label}
+                      </div>
+                    </div>
 
-                  {item.description && (
-                    <p className="text-sm text-gray-600 mt-1 pl-9 leading-snug">
-                      {item.description}
-                    </p>
-                  )}
-                </div>
+                    {item.description && (
+                      <p className="text-sm text-gray-600 mt-1 pl-9 leading-snug">
+                        {item.description}
+                      </p>
+                    )}
+                  </Link>
+                )}
+
 
                 {/* Subitems */}
                 <AnimatePresence>
