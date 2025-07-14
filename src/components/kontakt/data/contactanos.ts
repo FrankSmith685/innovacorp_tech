@@ -1,0 +1,1 @@
+export const contactanosIntro = `Bereit, den nächsten Schritt in Ihrer technologischen Transformation zu machen? Kontaktieren Sie uns noch heute, um zu besprechen, wie Innovacorp Ihnen helfen kann, Ihre Ziele zu erreichen.`;

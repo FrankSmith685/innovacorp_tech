@@ -5,6 +5,23 @@ import { AppProvider } from "@/context/appProvider";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 
+import { Roboto, Cormorant_Garamond } from "next/font/google";
+
+const robotoThin = Roboto({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-roboto-thin",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  weight: ["400", "500", "600","700"],
+  subsets: ["latin"],
+  variable: "--font-bell",
+  display: "swap",
+});
+
+
 // Carga fuentes
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,9 +40,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Innova Corp | Transformación Digital",
+  title: "Sandra Roggero M. Beratung",
   description:
-    "En Innova Corp, ayudamos a las empresas a liderar la innovación tecnológica a través de desarrollo de software, consultoría y transformación digital.",
+    "Contribuimos cada día a que las personas experimenten una profunda satisfacción en su camino profesional y crezcan personalmente. Hoy en día, se trata de más que solo 'encontrar' nuevos empleados rápidamente. Se trata de construir equipos de trabajo óptimos, compuestos por una organización estructurada de manera coherente con los objetivos de la empresa.",
 };
 export default function RootLayout({
   children,
@@ -34,17 +51,24 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+      
       <body
         className={`
           ${geistSans.variable}
           ${geistMono.variable}
           ${inter.variable}
+          ${robotoThin.variable}
+          ${cormorant.variable}
           font-sans antialiased
         `}
       >
-        <Header />
-        <AppProvider>{children}</AppProvider>
-        <Footer/>
+        
+          <AppProvider>
+            <Header />
+            {children}
+            <Footer/>
+          </AppProvider>
+        
       </body>
     </html>
   );

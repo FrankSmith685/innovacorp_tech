@@ -3,16 +3,16 @@ import { ReactNode, useReducer } from "react";
 import { AppContext } from "./appContext";
 import { appReducer } from "./appReducer";
 import { AppState } from "@/interface/appStateInterface";
-import { ImagePreloaderProvider } from "@/hooks/useImageHooks/imagePreloaderProvider";
-// import { AppState } from "../interfaces/appStateInterface";
-// import { ImagePreloaderProvider } from "../hooks/useImageHooks/imagePreloaderProvider";
+import { VideoPreloaderProvider } from "@/hooks/useVideoHooks/videoPreloaderProvider";
+import { PageTransitionProvider } from "@/hooks/useTransitionHooks/pageTransitionProvider";
+import CustomLoader from "@/components/ui/CustomLoader";
 
 interface Props {
   children: ReactNode;
 }
 
 const initialState: AppState = {
-  registerUser: null,
+  lenguaje: 'de',
 };
 
 export const AppProvider = ({ children }: Props) => {
@@ -22,7 +22,12 @@ export const AppProvider = ({ children }: Props) => {
 
   return (
     <AppContext.Provider value={{ appState, dispatch }}>
-      <ImagePreloaderProvider>{children}</ImagePreloaderProvider>
+      <VideoPreloaderProvider>
+      <PageTransitionProvider>
+        <CustomLoader />
+          {children}
+      </PageTransitionProvider>
+      </VideoPreloaderProvider>
     </AppContext.Provider>
   );
 };

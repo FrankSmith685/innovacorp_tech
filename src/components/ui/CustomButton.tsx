@@ -3,6 +3,7 @@ import { Button, ButtonProps, CircularProgress } from "@mui/material";
 
 type ButtonVariant =
   | "indigo"
+  | "indigo-outline"
   | "primary"
   | "primary-v2"
   | "primary-outline"
@@ -43,6 +44,19 @@ const getVariantStyles = (variant: ButtonVariant) => {
         transform: "scale(1.05)",
       },
     };
+    case "indigo-outline": // <-- nuevo caso
+      return {
+        ...commonStyles,
+        border: "1px solid #4f46e5",
+        color: "#4f46e5",
+        borderRadius: "9999px",
+        padding: "8px 24px",
+        fontWeight: "500",
+        "&:hover": {
+          backgroundColor: "rgba(79, 70, 229, 0.1)",
+          transform: "scale(1.05)",
+        },
+      };
 
     case "primary":
       return {

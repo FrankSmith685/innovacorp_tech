@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { AppContext } from "../context/appContext";
 
 import { 
-  setRegisterUser,
+  setLenguaje,
 } from "../context/actions/actions";
 
 export const useAppState = () => {
@@ -15,6 +15,6 @@ export const useAppState = () => {
 
   return {
     ...appState,
-    setRegisterUser: (registerUser: string | null) => dispatch(setRegisterUser(registerUser)),
+    setLenguaje: (lenguaje: string | null) => dispatch(setLenguaje(lenguaje)),
   };
 };

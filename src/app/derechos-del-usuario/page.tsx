@@ -1,86 +1,121 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import CustomImage from '@/components/ui/CustomImage';
+import { legalData } from './data/legalData';
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.2, duration: 0.5 },
+    transition: { delay: i * 0.15, duration: 0.5 },
   }),
 };
 
 export default function DerechosUsuarioSection() {
+  const {
+    titles,
+    company,
+    chamber,
+    authority,
+    dataProtection,
+    termsAndConditions,
+    imageRights,
+    textRights,
+  } = legalData;
+
   return (
-    <section className="w-full bg-gradient-to-br from-white to-indigo-50 py-28 px-4">
+    <section className="w-full bg-gradient-to-br from-white to-indigo-50 pt-[140px] pb-24 px-4">
       <div className="max-w-3xl mx-auto flex flex-col items-center text-center gap-6">
-        <motion.div
+        
+        {/* Título principal */}
+        <motion.h2
+          className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight"
           initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="w-full flex flex-col items-center text-center gap-6"
+          animate="visible"
+          variants={fadeIn}
+          custom={0}
         >
-          {/* Logo */}
-          <motion.div variants={fadeIn} custom={0}>
-            <CustomImage
-              name="logo_01"
-              alt="Logo Innova Corp"
-              width={100}
-              height={100}
-              className="object-contain"
-            />
-          </motion.div>
+          {titles.section}
+          <span className="block text-indigo-600 mt-2">{titles.subtitle}</span>
+        </motion.h2>
 
-          {/* Título */}
-          <motion.h2
-            className="text-xl sm:text-2xl font-bold text-gray-900 tracking-tight"
-            variants={fadeIn}
-            custom={1}
-          >
-            Derechos del Usuario
-            <span className="block text-indigo-600 mt-2">Protegemos tu información</span>
-          </motion.h2>
+        <motion.p
+          className="text-gray-700 text-sm md:text-base leading-relaxed tracking-wide"
+          initial="hidden"
+          animate="visible"
+          variants={fadeIn}
+          custom={1}
+        >
+          {titles.description}
+        </motion.p>
 
-          {/* Intro */}
-          <motion.p
-            className="text-gray-700 text-sm md:text-base leading-relaxed tracking-wide"
-            variants={fadeIn}
-            custom={2}
-          >
-            Aquí encontrarás toda la información relevante sobre tus derechos como usuario.
-          </motion.p>
-
-          {/* Información de contacto */}
-          <motion.div
-            className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm w-full"
-            variants={fadeIn}
-            custom={3}
-          >
-            <h3 className="text-indigo-700 text-sm font-semibold mb-3">Información de contacto</h3>
-            <ul className="text-sm text-gray-700 leading-relaxed space-y-2 text-left">
-              <li><strong>Nombre de la empresa:</strong> Innova Corp</li>
-              <li><strong>Dirección:</strong> Calle Bellavista 325, Miraflores Of. 202</li>
-              <li><strong>Correo electrónico:</strong> contacto@innovacorp.tech</li>
+        {/* Bloques pesados animados al entrar en vista */}
+        {[{
+          title: titles.serviceProviderTitle,
+          content: (
+            <ul className="text-sm text-gray-700 leading-relaxed space-y-2">
+              <li><strong>Nombre:</strong> {company.person}</li>
+              <li><strong>Empresa:</strong> {company.name}</li>
+              <li><strong>Dirección:</strong> {company.address}</li>
+              <li><strong>Teléfono:</strong> {company.phone}</li>
+              <li><strong>Email:</strong> {company.email}</li>
+              <li><strong>N° Fiscal:</strong> {company.taxId}</li>
+              <li><strong>Puesto:</strong> {company.jobTitle}</li>
+              <li><strong>País:</strong> {company.country}</li>
             </ul>
-          </motion.div>
-
-          {/* Derechos del usuario */}
-          <motion.div
-            className="bg-indigo-50 rounded-xl p-6 shadow-sm w-full"
-            variants={fadeIn}
-            custom={4}
-          >
-            <h3 className="text-indigo-800 text-base font-semibold mb-2">Tus derechos</h3>
-            <ul className="list-disc pl-5 text-sm text-gray-700 space-y-2 text-left">
-              <li><strong>Acceso:</strong> Puedes saber qué datos tenemos sobre ti y cómo los usamos.</li>
-              <li><strong>Rectificación:</strong> Puedes solicitar la corrección de tus datos si son inexactos.</li>
-              <li><strong>Eliminación:</strong> Puedes pedir que eliminemos tus datos si ya no son necesarios.</li>
-              <li><strong>Limitación y portabilidad:</strong> Puedes solicitar el traslado o restricción del uso de tus datos.</li>
+          )
+        }, {
+          title: titles.chamberTitle,
+          content: (
+            <ul className="text-sm text-gray-700 leading-relaxed space-y-2">
+              <li><strong>Cámara:</strong> {chamber.name}, {chamber.address}</li>
+              <li><strong>Sitio web:</strong> <a href={chamber.website} className="text-indigo-600 underline">{chamber.website}</a></li>
+              <li><strong>Autoridad supervisora:</strong> {authority.name}, {authority.address}</li>
+              <li><strong>Sitio web:</strong> <a href={authority.website} className="text-indigo-600 underline">{authority.website}</a></li>
             </ul>
+          )
+        }, {
+          title: titles.dataProtectionTitle,
+          content: (
+            <ul className="text-sm text-gray-700 leading-relaxed space-y-2">
+              <li><strong>Responsable:</strong> {dataProtection.responsible}</li>
+              <li><strong>Email:</strong> {dataProtection.email}</li>
+              <li><strong>Teléfono:</strong> {dataProtection.phone}</li>
+              <li><strong>Aviso legal:</strong> <a href={dataProtection.legalNotice} className="text-indigo-600 underline">{dataProtection.legalNotice}</a></li>
+            </ul>
+          )
+        }, {
+          title: titles.termsTitle,
+          content: (
+            <a href={termsAndConditions.link} className="text-indigo-600 underline text-sm">
+              {termsAndConditions.link}
+            </a>
+          )
+        }, {
+          title: titles.imageRightsTitle,
+          content: (
+            <>
+              <p className="text-sm text-gray-700 mb-2">{imageRights.note}</p>
+              <p className="text-sm text-gray-700"><strong>Derechos de imagen:</strong> {imageRights.owner}</p>
+              <p className="text-sm text-gray-700 mt-2">{textRights.note}</p>
+            </>
+          )
+        }].map((block, i) => (
+          <motion.div
+            key={i}
+            className="bg-white rounded-xl border border-gray-100 p-6 shadow-sm w-full text-left"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeIn}
+            custom={i + 2}
+          >
+            <h3 className="text-indigo-700 text-sm font-semibold mb-3">{block.title}</h3>
+            {block.content}
           </motion.div>
-        </motion.div>
+        ))}
+
       </div>
     </section>
   );

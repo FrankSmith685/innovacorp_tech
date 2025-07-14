@@ -1,0 +1,4 @@
+export const auditoriaIntro = `Wir identifizieren Vorurteile und beseitigen Hindernisse im Auswahlprozess.
+Auswahlprozesse haben sich im Laufe der Zeit weiterentwickelt und zusätzliche Systeme, Inhalte oder Technologien sind entstanden.
+Auch wenn diese Prozesse einen funktionierenden Service und Erfahrung bei der Talentauswahl bieten, werden wahrscheinlich in jeder Phase Ihres Prozesses dennoch Vorurteile bestehen. 
+Unser Inclusivity-Audit analysiert jeden Kontaktpunkt mit dem Kandidaten während des Auswahlprozesses, von der Stellenbeschreibung für diese Position über Ihren internen Talentbereich, den Bewerbungsprozess, das Vorstellungsgespräch und die Auswahl bis hin zum Onboarding. Dieser Ansatz bietet durchgängige Transparenz in Bezug auf aktive und versteckte Barrieren und Vorurteile.`;

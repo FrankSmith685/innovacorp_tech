@@ -1,0 +1,5 @@
+export const visadoTitulo = 'Visum';
+export const visadoTexto = `Die Visumbeantragung eines Arbeits- oder Studiengangs für Deutschland ist eines der wichtigsten Verfahren, wenn Sie Ihre Integration in das deutschsprachige Land beginnen möchten. Deutschland ist eine der größten Wirtschaftsmächte in Europa. Es bietet sehr gute Gehaltsmöglichkeiten und ist zu einer ausgezeichneten Option für diejenigen geworden, die entschlossen sind, ihren Lebensweg zu ändern. Wenn Sie sich in diesem Land richtig etablieren wollen, müssen Sie jedoch die Dinge richtig machen. Es ist wichtig, dass Sie alle Informationen über die zu erledigenden Unterlagen zur Hand haben. Zählen Sie auf uns!`;
+
+export const idiomaTitulo = 'Sprachkompetenzen';
+export const idiomaTexto = `Unsere Partnerschulen befinden sich in den schönsten und interessantesten Städten Deutschlands, die reich an Kultur und Geschichte sind. Ihre Deutschkurse werden Sie ermutigen und motivieren, die Sprache mit Leichtigkeit zu lernen und gleichzeitig diese Kultur intensiv zu erleben. Wir werden Ihnen zur Seite stehen, je nach Ihrem Zeitplan und Ihrer Verfügbarkeit.`;

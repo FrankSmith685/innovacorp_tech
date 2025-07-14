@@ -1,0 +1,5 @@
+export const busquedaIntro = `Die Menschen sind das Herzstück eines jeden Projekts.
+Die Auswahl qualifizierter Mitarbeiter ist sicherlich einer der wichtigsten Faktoren, wenn es darum geht, alle Ziele Ihres Unternehmens zu erreichen.
+Daher muss die Einbeziehung von Berufsprofilen, die zu den Werten und der Mission Ihres Unternehmens passen, eine Ihrer Prioritäten sein.
+Um die begehrtesten, qualifizierten Talente anzuziehen, müssen Sie die einzigartige Geschichte hinter Ihrem Unternehmen erzählen. Deshalb ist es wichtig, die Unterstützung und das Fachwissen einer spezialisierten Personalberatung in Anspruch zu nehmen, die weiß, was Sie wirklich brauchen und über ein breites Netzwerk von Fachkräften verfügt, die das Potenzial in einem Unternehmen wie dem Ihren voll ausschöpfen wollen.
+Bei Sandra Roggero-Beratung blicken wir über die Stellenbeschreibung hinaus, um die Geschichte zu verstehen, die Ihr Unternehmen erzählt, und bringen Sie mit den richtigen Leuten zusammen, die Ihnen helfen, Ihr Unternehmen umzugestalten.`;

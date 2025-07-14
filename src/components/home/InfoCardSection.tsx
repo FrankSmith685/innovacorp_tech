@@ -1,9 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { infoCards } from "./data/InfoCards";
 import { InfoCard } from "@/interface/infoCards";
 import CustomImage from "../ui/CustomImage";
+import { useEffect, useState } from "react";
+import { useAppState } from "@/hooks/useAppState";
+import { infoCardsDe } from "./data/InfoCards_De";
+import { infoCardsEs } from "./data/InfoCards_Es";
+import { infoCardsEn } from "./data/InfoCards_En";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 60, scale: 0.95 },
@@ -20,10 +24,23 @@ const cardVariants = {
 };
 
 const InfoCardSection: React.FC = () => {
+  const [infoCardsLocal,setInfoCardsLocal] = useState(infoCardsDe);
+    
+    const {lenguaje} = useAppState();
+  
+    useEffect(()=>{
+      if(lenguaje == "es"){
+        setInfoCardsLocal(infoCardsEs)
+      }else if(lenguaje == "de"){
+        setInfoCardsLocal(infoCardsDe)
+      }else{
+        setInfoCardsLocal(infoCardsEn)
+      }
+    },[lenguaje])
   return (
     <section className="py-20 px-6 bg-white">
       <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-        {infoCards.map((card: InfoCard, index: number) => (
+        {infoCardsLocal.map((card: InfoCard, index: number) => (
           <motion.div
             key={index}
             custom={index}
@@ -35,9 +52,11 @@ const InfoCardSection: React.FC = () => {
           >
             <div className="relative h-48 overflow-hidden rounded-t-3xl">
               <CustomImage
-                name={card.image}
+                src={card.image}
                 alt={card.title}
-                className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500 ease-out"
+                width={1500}
+                height={1000}
+                className="object-cover !w-full !h-full group-hover:scale-105 transition-transform duration-500 ease-out"
               />
               <div className="absolute inset-0 bg-white/10 group-hover:bg-white/20 transition-colors duration-300" />
             </div>

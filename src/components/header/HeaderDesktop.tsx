@@ -1,8 +1,8 @@
 'use client';
 
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { NavItem } from "@/interface/navItem";
+import { usePageTransition } from "@/hooks/useTransitionHooks/pageTransitionProvider";
 
 interface DesktopHeaderProps {
   pathname: string;
@@ -19,8 +19,9 @@ export default function DesktopHeader({
   setHoveredIndex,
   navItems,
 }: DesktopHeaderProps) {
+  const { navigate } = usePageTransition();
   return (
-    <nav className="hidden lg:flex items-center gap-8 w-full justify-end h-full">
+    <nav className="hidden lg:flex items-center gap-0 w-full justify-end h-full">
       {navItems.map((item, idx) => (
         <div
           key={item.href}
@@ -32,14 +33,14 @@ export default function DesktopHeader({
             animate={hoveredIndex === idx ? { scale: 1.08, y: -1 } : { scale: 1, y: 0 }}
             transition={{ type: "spring", stiffness: 250 }}
           >
-            <Link
-              href={item.href}
-              className={`flex items-center gap-2 text-[15px] font-medium px-4 py-2 rounded-full transition-all duration-200 ${
+            <div
+              onClick={()=>navigate(item.subItems[0]?.href)}
+              className={`flex items-center hover:cursor-pointer gap-2 text-[15px] font-medium px-4 py-2 rounded-full transition-all duration-200 ${
                 pathname.startsWith(item.href) 
                   ? "bg-blue-100 text-blue-700 shadow"
                   : hoveredIndex === idx
                   ? "bg-gray-100 text-blue-600"
-                  : scrolled || hoveredIndex !== null || pathname === "/politica-privacidad" || pathname === "/derechos-del-usuario"
+                  : scrolled || hoveredIndex !== null || pathname === "/politica-privacidad" || pathname === "/derechos-del-usuario" ||pathname === "/terminos-condiciones" || pathname === "/benutzerrechte" || pathname === "/datenschutzrichtlinie" ||pathname === "/agb" || pathname === "/user-rights" || pathname === "/privacy-policy" ||pathname === "/terms-conditions"
                   ? "text-gray-800 hover:bg-gray-100 hover:text-blue-600"
                   : "text-white hover:text-blue-300"
               }`}
@@ -53,7 +54,7 @@ export default function DesktopHeader({
                 {item.icon}
               </motion.span>
               {item.label}
-            </Link>
+            </div>
           </motion.div>
 
           <AnimatePresence>
@@ -63,7 +64,7 @@ export default function DesktopHeader({
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.35, ease: "easeOut" }}
-                className="fixed top-[90px] left-0 w-screen z-50 bg-gradient-to-br from-white/90 via-white/95 to-blue-50/90 backdrop-blur-lg border-t border-blue-100 shadow-2xl"
+                className="fixed top-[140px] left-0 w-screen z-50 bg-gradient-to-br from-white/90 via-white/95 to-blue-50/90 backdrop-blur-lg border-t border-blue-100 shadow-2xl"
               >
                 <div className="max-w-7xl mx-auto px-10 py-10 grid grid-cols-1 md:grid-cols-2 gap-10">
                   <div className="flex flex-col justify-center gap-3 pr-4">
@@ -78,11 +79,11 @@ export default function DesktopHeader({
                   {item.subItems.length > 0 && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-6">
                       {item.subItems.map((sub) => (
-                        <Link
+                        <div
                           key={sub.href}
-                          href={sub.href}
+                          onClick={()=>navigate(sub.href)}
                           rel="noopener noreferrer"
-                          className="group flex items-start gap-4 p-5 rounded-2xl bg-white/90 hover:bg-blue-50 transition duration-300 shadow-md hover:shadow-xl border border-gray-100"
+                          className="group hover:cursor-pointer flex items-start gap-4 p-5 rounded-2xl bg-white/90 hover:bg-blue-50 transition duration-300 shadow-md hover:shadow-xl border border-gray-100"
                         >
                           <div className="text-3xl text-blue-500 group-hover:scale-110 transition-transform duration-300">
                             {sub.icon}
@@ -92,7 +93,7 @@ export default function DesktopHeader({
                               {sub.label}
                             </p>
                           </div>
-                        </Link>
+                        </div>
                       ))}
                     </div>
                   )}

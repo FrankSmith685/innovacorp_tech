@@ -1,10 +1,31 @@
 "use client";
 
+import { useAppState } from "@/hooks/useAppState";
+import { usePageTransition } from "@/hooks/useTransitionHooks/pageTransitionProvider";
+import { useEffect, useState } from "react";
 import { FaBolt } from "react-icons/fa";
 
 export default function CustomLoader() {
+  const { loading } = usePageTransition();
+
+  const [labelLoading,setLabelLoading] = useState("Lädt Sandra Roggero...");
+        
+  const {lenguaje} = useAppState();
+
+  useEffect(()=>{
+    if(lenguaje == "es"){
+      setLabelLoading("Cargando Sandra Roggero...")
+    }else if(lenguaje == "de"){
+      setLabelLoading("Lädt Sandra Roggero...")
+    }else{
+      setLabelLoading("Loading Sandra Roggero...")
+    }
+  },[lenguaje])
+  
+    if (!loading) return null;
+  
   return (
-    <div className="flex flex-col items-center justify-center h-screen w-full bg-gradient-to-br from-black via-gray-900 to-blue-900 text-white relative overflow-hidden">
+    <div className="flex flex-col items-center justify-center h-screen fixed inset-0 z-[9999] w-full bg-gradient-to-br from-black via-gray-900 to-blue-900 text-white overflow-hidden">
 
       {/* Círculo animado de fondo */}
       <div className="absolute w-72 h-72 bg-blue-500 opacity-20 rounded-full animate-ping blur-2xl" />
@@ -16,7 +37,7 @@ export default function CustomLoader() {
 
       {/* Texto atractivo */}
       <p className="z-10 text-lg md:text-xl font-semibold tracking-wide text-blue-200 animate-pulse">
-        Cargando Innovacorp...
+        {labelLoading}
       </p>
     </div>
   );

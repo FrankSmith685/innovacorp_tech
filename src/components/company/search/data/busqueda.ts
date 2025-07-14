@@ -1,0 +1,4 @@
+export const busquedaIntro = `People are at the heart of every project. Selecting qualified employees is undoubtedly one of the most important factors when it comes to achieving your company’s goals.
+Therefore, incorporating professional profiles that align with your company’s values and mission should be one of your top priorities. To attract the most sought-after and qualified talent, you need to tell the unique story behind your company.
+That’s why it’s important to seek the support and expertise of a specialized recruitment consultancy that truly understands your needs and has a broad network of professionals ready to realize their full potential in a company like yours.
+At Sandra Roggero Consulting, we look beyond job descriptions to understand the story your company tells — and we connect you with the right people who will help transform your business.`;

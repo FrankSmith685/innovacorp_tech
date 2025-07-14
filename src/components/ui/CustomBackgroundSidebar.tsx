@@ -1,18 +1,36 @@
 'use client';
 
 import { BackgroundSliderProps } from '@/interface/backgroundSidebarInterface';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import CustomImage from '@/components/ui/CustomImage';
+import { usePathname } from 'next/navigation';
 
 export default function BackgroundSlider({ slides }: BackgroundSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const pathname = usePathname();
+  const previousPath = useRef(pathname);
 
+  // Reinicia el slider si cambia la ruta
   useEffect(() => {
+    if (previousPath.current !== pathname) {
+      setCurrentIndex(0);
+      previousPath.current = pathname;
+    }
+  }, [pathname]);
+
+  // Control del intervalo de cambio de slide
+  useEffect(() => {
+    let isMounted = true;
     const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % slides.length);
+      if (isMounted) {
+        setCurrentIndex((prev) => (prev + 1) % slides.length);
+      }
     }, 3000);
 
-    return () => clearInterval(interval);
+    return () => {
+      isMounted = false;
+      clearInterval(interval);
+    };
   }, [slides.length]);
 
   const currentSlide = slides[currentIndex];
@@ -22,31 +40,35 @@ export default function BackgroundSlider({ slides }: BackgroundSliderProps) {
       {/* Imagen de fondo */}
       <div className="absolute inset-0 z-0">
         <CustomImage
-          name={currentSlide.name}
+          src={currentSlide.name}
           alt={currentSlide.text || 'slide image'}
-          width={1920}
-          height={1080}
-          className="w-full h-full object-cover transition-all duration-700"
+          width={1500}
+          height={1000}
+          isCritical
+          className="!w-full !h-full object-cover transition-all duration-700"
         />
       </div>
 
       {/* Capa oscura */}
       <div className="absolute inset-0 bg-black/50 z-10" />
 
-      {/* Imagen decorativa o texto (ahora en esquina inferior derecha) */}
+      {/* Texto o imagen decorativa */}
       <div className="relative z-20 flex items-end justify-end h-full px-4 pb-12 pr-12 text-right">
         {currentSlide.nameImage ? (
           <CustomImage
-            name={currentSlide.nameImage}
+            src={currentSlide.nameImage}
             alt="icono decorativo"
             width={200}
             height={200}
+            isCritical
             className="object-contain"
           />
         ) : (
-          <h2 className="text-white text-2xl md:text-3xl font-semibold">
-            {currentSlide.text}
-          </h2>
+          <div className="relative z-20 flex items-end justify-end h-full px-4 pb-12 pr-12 text-right">
+            <h2 className="text-white text-2xl md:text-3xl font-semibold">
+              {currentSlide?.text || ''}
+            </h2>
+          </div>
         )}
       </div>
 

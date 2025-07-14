@@ -1,9 +1,9 @@
 // import { User } from "../../interfaces/appStateInterface";
-import { SET_REGISTERUSER } from "@/types/actionTypes";
+import { SET_LENGUAJE } from "@/types/actionTypes";
 
-export const setRegisterUser = (registerUser: string | null) => ({
-  type: SET_REGISTERUSER,
-  payload: registerUser,
+export const setLenguaje = (lenguaje: string | null) => ({
+  type: SET_LENGUAJE,
+  payload: lenguaje,
 });
 
 

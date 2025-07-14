@@ -1,39 +1,40 @@
 'use client';
 
-import Image from "next/image";
-import { useImagePreloader } from "@/hooks/useImageHooks/useImagePreloader";
-import { FaSpinner } from "react-icons/fa";
+import Image from 'next/image';
 
 type CustomImageProps = {
-  name: string;
+  src: string;
   alt: string;
   width?: number;
   height?: number;
   className?: string;
+  isCritical?: boolean;
 };
 
-const CustomImage = ({ name, alt, width, height, className }: CustomImageProps) => {
-  const { images, isLoaded } = useImagePreloader();
-  const imageSrc = images[name] ?? "";
-
-  if (!isLoaded) {
-    return (
-      <div className="flex justify-center items-center w-full h-full">
-        <FaSpinner className="animate-spin text-gray-500 text-3xl" />
-      </div>
-    );
-  }
+const CustomImage = ({
+  src,
+  alt,
+  width = 250,
+  height = 150,
+  className,
+  isCritical = false,
+}: CustomImageProps) => {
 
   return (
-    <Image
-      src={imageSrc}
-      alt={alt}
-      width={width ?? 300}
-      height={height ?? 200}
-      className={className}
-      loading="lazy"
-    />
+    // <div className={`relative`} style={{ width, height }}>
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        // style={{ height: width, width: height }}
+        className={`${className ?? ''} opacity-100 transition-opacity duration-300`}
+        loading={isCritical ? 'eager' : 'lazy'}
+        priority={isCritical}
+      />
+    // </div>
   );
 };
 
 export default CustomImage;
+

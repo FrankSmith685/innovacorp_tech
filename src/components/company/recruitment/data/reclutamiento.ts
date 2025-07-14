@@ -1,0 +1,4 @@
+export const reclutamientoIntro = `We commit to every recruitment process as if it were our own company, focusing on people and truly listening to them—whether they are candidates or clients. Consulting and understanding needs play a significant role.
+In addition, thanks to our own 'Onboarding Selection' service, we support and ensure the best possible integration of candidates into the company. We are both recruitment consultants and integration coaches.
+The onboarding process is not just about post-selection follow-up; it accompanies the entire process from the very beginning, always aligned with the company's mission and goals.
+Each recruitment process is unique because no two people or companies are the same. There is a solution for every company, and at Sandra Roggero Consulting, we know how to find it.`;

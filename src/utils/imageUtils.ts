@@ -1,61 +1,30 @@
 import { ImageEntry } from "@/interface/imageInterface";
 
 export const imageList: ImageEntry[] = [
-    { name: "logo_01", key: "inno_694" },
-    { name: "logo_02", key: "inno_695" },
-    { name: "logo_01_mappi", key: "mapp_228" },
-    { name: "home_01", key: "inno_704" },
-    { name: "info_01", key: "inno_705" },
-    { name: "info_02", key: "inno_706" },
-    { name: "info_03", key: "inno_707" },
-    { name: "info_04", key: "inno_708" },
-    { name: "side_info_01", key: "inno_709" },
-    { name: "side_info_02", key: "inno_710" },
-    { name: "side_info_03", key: "inno_711" },
-    { name: "team_01", key: "inno_712" },
-    { name: "team_02", key: "inno_713" },
-    { name: "team_03", key: "inno_714" },
-    { name: "team_04", key: "inno_715" },
-    { name: "servicio_01", key: "inno_716" },
-    { name: "servicio_02", key: "inno_717" },
-    { name: "servicio_03", key: "inno_718" },
-    { name: "servicio_04_01", key: "inno_719" },
-    { name: "servicio_04_02", key: "inno_720" },
-    { name: "servicio_04_03", key: "inno_721" },
-    { name: "desarrollo_01", key: "inno_722" },
-    { name: "desarrollo_02", key: "inno_723" },
-    { name: "consultoria_01", key: "inno_724" },
-    { name: "consultoria_02", key: "inno_725" },
-    { name: "transformacion_01", key: "inno_726" },
-    { name: "transformacion_02", key: "inno_727" },
-    { name: "seguridad_01_01", key: "inno_728" },
-    { name: "seguridad_02_01", key: "inno_729" },
-    { name: "seguridad_02_02", key: "inno_730" },
-    { name: "seguridad_03_01", key: "inno_731" },
-    { name: "seguridad_03_02", key: "inno_732" },
-    { name: "seguridad_03_03", key: "inno_733" },
-    { name: "seguridad_03_04", key: "inno_734" },
-    { name: "seguridad_03_05", key: "inno_735" },
-    { name: "seguridad_03_06", key: "inno_736" },
-    { name: "seguridad_04_01", key: "inno_737" },
-    { name: "seguridad_04_02", key: "inno_738" },
-    { name: "mappi_01", key: "inno_739" },
-    { name: "mappi_02", key: "inno_740" },
-    { name: "mappi_03", key: "inno_741" },
-    { name: "mappi_04", key: "inno_742" },
-    { name: "mappi_05", key: "inno_743" },
-    { name: "mappi_06", key: "inno_744" },
-    { name: "mappi_07", key: "inno_745" },
-    { name: "contactanos_01", key: "inno_746" },
-
-    
-
-
-    
-
-
-    
-
-    
-    
-  ];
+  { name: "logo_black_01", key: "LogoPrincipalBlack.png" },
+  { name: "logo_white_02", key: "logoPrincipalWhite.png" },
+  { name: "home_01", key: "Home_01.webp" },
+  { name: "info_01", key: "info_01.png" },
+  { name: "info_02", key: "info_02.png" },
+  { name: "info_03", key: "info_03.png" },
+  { name: "info_04", key: "info_04.png" },
+  { name: "side_info_01", key: "side_info_01.webp" },
+  { name: "side_info_02", key: "side_info_02.webp" },
+  { name: "side_info_03", key: "side_info_03.webp" },
+  { name: "side_info_04", key: "side_info_04.webp" },
+  { name: "side_info_05", key: "side_info_05.webp" },
+  { name: "side_info_06", key: "side_info_06.webp" },
+  { name: "side_info_07", key: "side_info_10.jpg" },
+  { name: "side_info_08", key: "side_info_08.webp" },
+  { name: "side_info_09", key: "side_info_09.webp" },
+  { name: "empresa_01", key: "empresa_01.webp" },
+  { name: "empresa_02", key: "empresa_02.webp" },
+  { name: "empresa_03", key: "empresa_03.webp" },
+  { name: "empresa_04", key: "empresa_04.webp" },
+  { name: "empresa_05", key: "empresa_05.webp" },
+  { name: "empresa_06", key: "empresa_06.webp" },
+  // { name: "candidatos_01", key: "candidatos_01.webp" },
+  // { name: "candidatos_02", key: "candidatos_02.webp" },
+  // { name: "nosotros_01", key: "nosotros_01.webp" },
+  // { name: "nosotros_02", key: "nosotros_02.webp" },
+];

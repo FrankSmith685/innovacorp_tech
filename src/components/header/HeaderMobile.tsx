@@ -1,9 +1,9 @@
 'use client';
 
-import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
 import { NavItem } from "@/interface/navItem";
+import { usePageTransition } from "@/hooks/useTransitionHooks/pageTransitionProvider";
 
 interface MobileHeaderProps {
   menuOpen: boolean;
@@ -20,6 +20,7 @@ export default function MobileHeader({
   setMenuOpen,
   navItems,
 }: MobileHeaderProps) {
+  const { navigate } = usePageTransition();
   return (
     <AnimatePresence>
       {menuOpen && (
@@ -28,7 +29,7 @@ export default function MobileHeader({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.15, ease: "easeOut" }}
-          className="fixed top-[90px] left-0 w-full h-[calc(100vh-90px)] lg:hidden bg-gradient-to-br from-white/90 via-white/95 to-blue-50/90 backdrop-blur-lg shadow-xl overflow-y-auto px-4 py-6 border-t border-gray-200 space-y-4 z-40"
+          className="fixed top-[140px] left-0 w-full h-[calc(100vh-140px)] lg:hidden bg-gradient-to-br from-white/90 via-white/95 to-blue-50/90 backdrop-blur-lg shadow-xl overflow-y-auto px-4 py-6 border-t border-gray-200 space-y-4 z-40"
         >
           {navItems.map((item, idx) => {
             const isExpanded = expandedIndex === idx;
@@ -68,10 +69,12 @@ export default function MobileHeader({
                     )}
                   </div>
                 ) : (
-                  <Link
-                    href={item.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="w-full flex flex-col gap-2 cursor-pointer"
+                  <div
+                    onClick={() => {
+                      navigate(item.href);
+                      setMenuOpen(false);
+                    }}
+                    className="w-full flex flex-col gap-2 cursor-pointer hover:cursor-pointer"
                   >
                     <div className="flex justify-between items-center gap-3 font-medium text-[15px] text-blue-700 hover:text-blue-800">
                       <div className="flex items-center gap-3">
@@ -85,7 +88,7 @@ export default function MobileHeader({
                         {item.description}
                       </p>
                     )}
-                  </Link>
+                  </div>
                 )}
 
 
@@ -100,17 +103,19 @@ export default function MobileHeader({
                       className="mt-3 flex flex-col gap-2 pl-9"
                     >
                       {item.subItems.map((sub) => (
-                        <Link
+                        <div
                           key={sub.href}
-                          href={sub.href}
-                          onClick={() => setMenuOpen(false)}
-                          className="flex items-center gap-2 text-sm text-gray-800 hover:text-blue-600 transition-all duration-200"
+                          onClick={() => {
+                            setMenuOpen(false);
+                            navigate(sub.href);
+                          }}
+                          className="flex items-center hover:cursor-pointer gap-2 text-sm text-gray-800 hover:text-blue-600 transition-all duration-200"
                         >
                           <span className="text-lg text-blue-500 group-hover:scale-110 transition-transform">
                             {sub.icon}
                           </span>
                           {sub.label}
-                        </Link>
+                        </div>
                       ))}
                     </motion.div>
                   )}
