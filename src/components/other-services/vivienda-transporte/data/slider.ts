@@ -7,6 +7,6 @@ export const slides: Slide[] = [
   },
   {
     name: '/images/side_info_10.jpg',
-    text: 'Housing - Transportation',
+    text: 'Housing - Transportation', 
   },
 ];
