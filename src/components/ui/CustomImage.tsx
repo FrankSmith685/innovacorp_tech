@@ -21,18 +21,15 @@ const CustomImage = ({
 }: CustomImageProps) => {
 
   return (
-    // <div className={`relative`} style={{ width, height }}>
       <Image
         src={src}
         alt={alt}
         width={width}
         height={height}
-        // style={{ height: width, width: height }}
         className={`${className ?? ''} opacity-100 transition-opacity duration-300`}
         loading={isCritical ? 'eager' : 'lazy'}
         priority={isCritical}
       />
-    // </div>
   );
 };
 
